@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+<body>
+  <header class="full-header">
+      <div class="main-nav container p-2">
+         <ul class="nav">
+          <li class="name"><a href="index.html">MOKAIO</a></li>
+        </ul>
+      </div>
+      <div class="center-content">
+        <div class="value-prop">
+          {% if forecast %}
+          <h1 class="title m-5">Voici la météo de demain : </h1>
+          <p class= "m-5">La température extérieur sera de {{ (forecast["daily"]["data"][1]["apparentTemperatureHigh"] -32)*5/9 }}°C </p>
+          <p class= "m-5">{{ forecast["currently"]["summary"] }} </p>
+
+          {% else %}
+          <h1 class="title m-5">Hello, je ne connais pas le temps qu'il fera demain</h1>
+          {% endif %}
+          <div class="d-flex flex-direction-row justify-content-center">
+            <a class ="CTA-projet m-5 col-md-12" href="{{ url_for('index') }}">Menu Principal</a>
+          </div>
+        </div>
+      </div>
+    </header>
+</body>
+{% endblock %}
